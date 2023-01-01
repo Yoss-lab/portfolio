@@ -2,6 +2,9 @@
   /**
    * Header fixed top on scroll
    */
+  //let selectid = document.getElementsById('index');
+  let  bodyId = document.body.id;
+  if (bodyId == 'index' ) { 
    let selectHeader = document.getElementById('header');
   
      let headerOffset = selectHeader.offsetTop;
@@ -21,7 +24,9 @@
      }
     );
      }
+    } /* else if (bodyId != 'index' ) { 
 
+    } */
   /**
    * icon slider fixed tourne on scroll
    */
