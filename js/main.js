@@ -38,8 +38,8 @@
           let speed = 0.2;
           let spin = y * speed;
           let spinner = document.getElementById('icon-slider');
-          console.log('ofset top :  ' + y);
-          console.log('speed :  ' + speed);
+          /* console.log('ofset top :  ' + y);
+          console.log('speed :  ' + speed); */
          
       
         TweenMax.staggerTo('.icon-slider', 1.8, {
@@ -50,7 +50,7 @@
         let tl = new TimelineMax({ paused: false });
       
         if (screen.width < 767) {
-          console.log(window.width);
+         /*  console.log(window.width); */
           if (window.scrollY >= 10) {
             tl.to(spinner, 0.9, { scale: 0.1, opacity: 0 });
           } else {
@@ -97,4 +97,181 @@
       }  */
 
 
+   /* timeline */
+
    
+
+    // VARIABLES
+    const timeline = document.querySelector(".timeline ol"),
+      elH = document.querySelectorAll(".timeline li > div"),
+      arrows = document.querySelectorAll(".timeline .arrows .arrow"),
+      arrowPrev = document.querySelector(".timeline .arrows .arrow__prev"),
+      arrowNext = document.querySelector(".timeline .arrows .arrow__next"),
+      firstItem = document.querySelector(".timeline li:first-child"),
+      lastItem = document.querySelector(".timeline li:last-child"),
+      xScrolling = 310,
+      disabledClass = "disabled";
+  
+    // START
+    window.addEventListener("load", init);
+  
+    function init() {
+      setEqualHeights(elH);
+      animateTl(xScrolling, arrows, timeline);
+      setSwipeFn(timeline, arrowPrev, arrowNext);
+      setKeyboardFn(arrowPrev, arrowNext);
+      
+    }
+  
+    // SET EQUAL HEIGHTS
+    // tout les items prend meme hauteur (la grande hauteur )
+    function setEqualHeights(el) {
+      let counter = 0;
+      for (let i = 0; i < el.length; i++) {
+        const singleHeight = el[i].offsetHeight;
+  
+        if (counter < singleHeight) {
+          counter = singleHeight;
+        }
+      }
+  
+      for (let i = 0; i < el.length; i++) {
+        el[i].style.height = `${counter}px`;
+      }
+    }
+  
+    // CHECK IF AN ELEMENT IS IN VIEWPORT
+    // http://stackoverflow.com/questions/123999/how-to-tell-if-a-dom-element-is-visible-in-the-current-viewport
+      function isElementInViewport(el) {
+      const rect = el.getBoundingClientRect();
+      console.log(rect.top);
+      console.log(rect.botom);
+      return (
+        
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    }  
+  
+    // SET STATE OF PREV/NEXT ARROWS
+     function setBtnState(el, flag = true) {
+      if (flag) {
+        el.classList.add(disabledClass);
+      } else {
+        if (el.classList.contains(disabledClass)) {
+          el.classList.remove(disabledClass);
+        }
+        el.disabled = false;
+      }
+    } 
+  
+    // ANIMATE TIMELINE
+    function animateTl(scrolling, el, tl) {
+      let counter = 0;
+     
+      let timelineWidth = timeline.scrollWidth;
+      let container = document.getElementById('container');
+      const containerWidth = container.clientWidth;
+      for (let i = 0; i < el.length; i++) {
+        el[i].addEventListener("click", function() {
+           if (!arrowPrev.disabled) {
+            arrowPrev.disabled = true;
+            //arrowPrev.style.cursor = none;
+          }
+          if (!arrowNext.disabled) {
+            arrowNext.disabled = true;
+            //arrowNext.style.cursor = none;
+          } 
+          const sign = (this.classList.contains("arrow__prev")) ? "" : "-";
+          console.log(counter);
+          
+         
+          
+      console.log(timelineWidth);
+          console.log(containerWidth);
+          if (counter === 0 ) {
+            tl.style.transform = `translateX(-${scrolling}px)`;
+
+     
+            //console.log(tlStyle);
+            // add more browser prefixes if needed here
+      
+             timelineWidth = timelineWidth - scrolling ;
+            console.log("width apres 1 :");
+            console.log(timelineWidth);
+          } else  {
+            //debug
+            console.log('boucle');
+            const tlStyle = getComputedStyle(tl);
+            //console.log(tlStyle);
+            // add more browser prefixes if needed here
+            const tlTransform = tlStyle.getPropertyValue("-webkit-transform") || tlStyle.getPropertyValue("transform");
+            const values = parseInt(tlTransform.split(",")[4]) + parseInt(`${sign}${scrolling}`);
+            console.log(tlTransform.split(",")[4]);
+            tl.style.transform = `translateX(${values}px)`;
+          
+            timelineWidth = timelineWidth - scrolling ;
+            console.log("width apres :");
+            console.log(timelineWidth);
+          }
+         
+             setTimeout(() => {
+            isElementInViewport(firstItem) ? setBtnState(arrowPrev) : setBtnState(arrowPrev, false);
+            isElementInViewport(lastItem) ? setBtnState(arrowNext) : setBtnState(arrowNext, false);
+          }, 1100);   
+
+          counter++;
+         
+        });
+      }
+    }
+  
+    // ADD SWIPE SUPPORT FOR TOUCH DEVICES
+     function setSwipeFn(tl, prev, next) {
+      const hammer = new Hammer(tl);
+      hammer.on("swipeleft", () => next.click());
+      hammer.on("swiperight", () => prev.click());
+    } 
+  
+    // ADD BASIC KEYBOARD FUNCTIONALITY
+     /* function setKeyboardFn(prev, next) {
+      document.addEventListener("keydown", (e) => {
+        if ((e.which === 37) || (e.which === 39)) {
+          //debug
+          const timelineOfTop = timeline.innerWidth;
+          const y = window.pageYOffset;
+           if (timelineOfTop !== y) { 
+            window.scrollTo(0, timelineOfTop);
+           } 
+          if (e.which === 37) {
+            prev.click();
+          } else if (e.which === 39) {
+            next.click();
+          }
+        }
+      });
+    }  */
+
+     // ADD BASIC KEYBOARD FUNCTIONALITY
+  function setKeyboardFn(prev, next) {
+    document.addEventListener("keydown", (e) => {
+      if ((e.which === 37) || (e.which === 39)) {
+        const timelineOfTop = timeline.offsetTop;
+        const y = window.pageYOffset;
+        if (timelineOfTop !== y) {
+          window.scrollTo(0, timelineOfTop);
+        }
+        if (e.which === 37) {
+          prev.click();
+        } else if (e.which === 39) {
+          next.click();
+        }
+      }
+    });
+  }
+  
+
+
+   /* end timeline */
