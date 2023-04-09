@@ -1,9 +1,16 @@
-//Fonts 
-    
 
-    
+$bg-body:  #ffff;
+$color-body: #000;
 $font-body : 'Nunito', sans-serif;
-$color-chevron: #d6a89f;
+
+
 $general-color: #d6a89f;
 $second-color:  #9ba9b3;
+
+
+$bg-header: #fff;
+$color-header:#000;
+$color-header-hover: $general-color;
+//$color-header-hover-not-sticky: $second-color;
+$color-chevron: #d6a89f;
 $bg-hashtag :   #9ba9b3;

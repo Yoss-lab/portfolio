@@ -13,6 +13,8 @@ i {
 body { 
     font-family: $font-body;
     overflow-x: hidden;
+    background-color: $bg-body;
+    color: $color-body;
 
     h1 , .h1{
         font-size: 35px;
@@ -203,7 +205,7 @@ body {
 .header{
     transition: all 0.5s;
     height: 60px;
-    background: #fff;
+    background: $bg-header;
     box-shadow: 0px 0px 20px 0px rgba(0 ,0 ,0 , .12);
     .slogan-header{
         font-size: 42px;
@@ -234,11 +236,11 @@ body {
                     margin: 0 12px;
                     font-size: 14px;
                     font-weight: 400 ;
-                    color: #000;
+                    color: $color-header;
                     text-decoration: none;
                     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
                     &:hover , &:focus , &.active{
-                        color: #000;
+                        color: $color-header-hover;
                         font-weight: 600;
                     }
 
@@ -247,25 +249,78 @@ body {
         }
       
     }
-    @media (min-width:768px) {
-        .navbar-expand-lg {
-            flex-wrap: nowrap;
-            justify-content: flex-start;
-            .navbar-toggler {
+    .navbar-expand-lg {
+          
+        .navbar-toggler {
+            @media (min-width:768px) {
                 display: none;
-            }   
-            .navbar-collapse {
+            }
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }   
+        .navbar-collapse {
+            @media (min-width:768px) {
                 display: flex!important;
                 flex-basis: auto;
             }
-            .navbar-nav {
-                flex-direction: row;
-            }
         }
-
+        .navbar-nav {
+             @media (min-width:768px) {
+                flex-wrap: wrap;
+            } 
+        }
     }
     
 }
+
+[type=button]:not(.collapsed){
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+[type=button].collapsed{
+    position: relative;
+}
+button.navbar-toggler{
+    border: none !important;
+    box-shadow: none !important;
+    .navbar-toggler-icon {
+        background-image: url("../img/menu-noir.svg") !important;
+    }
+}
+ 
+.navbar-collapse.collapse.show{
+    background-color: $bg-header;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 99;
+    
+    ul{
+        height: 80%;
+        justify-content: center;
+        overflow: auto;
+        display: block;
+        margin-top: 60px ;
+    
+        li{
+            a{
+                color: $color-header;
+                &:hover , &:focus , &.active{
+                    color: $color-header-hover;
+                }
+
+            }
+        }
+    }
+    
+}
+
+
 
 
 .social-icons{

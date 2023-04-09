@@ -6,11 +6,32 @@
   let  bodyId = document.body.id;
   if (bodyId == 'index' ) { 
    let selectHeader = document.getElementById('header');
-  
+  let handler = document.getElementById('navbar-toggler');
+
+ 
      let headerOffset = selectHeader.offsetTop;
-     let nextElement = selectHeader.nextElementSibling
+     let nextElement = selectHeader.nextElementSibling;
      //console.log('offset : ' + headerOffset);
      if (selectHeader) {
+       handler.addEventListener("click", function() {
+        let handlerchecked = handler.classList.contains('collapsed') ;
+     
+        if(handlerchecked){
+          console.log("coll true");
+          selectHeader.classList.remove('fixed-top');
+        nextElement.classList.remove('scrolled-offset');
+        } else {
+          console.log("coll false");
+          selectHeader.classList.add('fixed-top');
+              nextElement.classList.add('scrolled-offset');
+              nextElement.style.marginTop="0";
+       
+        } 
+      }); 
+
+   
+
+      
      window.addEventListener('scroll', function() {
         //console.log('offset2 : ' + (headerOffset - window.scrollY));
         if ((headerOffset - window.scrollY) <= 0) {
@@ -19,7 +40,9 @@
             nextElement.classList.add('scrolled-offset')
           } else {
             selectHeader.classList.remove('fixed-top');
-            nextElement.classList.remove('scrolled-offset')
+            nextElement.classList.remove('scrolled-offset');
+            
+
           }
      }
     );
@@ -95,6 +118,18 @@
           }
           reviews[review].style.opacity = "1";
       }  */
+
+   /** animation slider */
+
+      const titreSlider = document.querySelectorAll('.title-slider span');
+      window.addEventListener('load' , () =>{
+        const tl = gsap.timeline({paused:true });
+        console.log(tl);
+        tl.staggerFrom(titreSlider,1,{top:-50,opacity:0,ease:"power2.out"},0.3)
+        tl.play();
+      })
+
+   /** fin animation slider */
 
 
    /* timeline */
