@@ -1,16 +1,25 @@
 
-$bg-body:  #ffff;
-$color-body: #000;
+$bg-body:  #101010;
+$color-body: #fff;
 $font-body : 'Nunito', sans-serif;
 
 
-$general-color: #d6a89f;
-$second-color:  #9ba9b3;
+$general-color: #e3b449;
+$second-color:  #d79a10;
 
+$bg_section_dark:#f7f8fa;
+$color_section_dark:#000;
 
-$bg-header: #fff;
+$bg_section_light:#fff;
+$color_section_light:#000;
+
+$bg-header: #fff ;
 $color-header:#000;
 $color-header-hover: $general-color;
+
+$bg_footer_left:#d79a10;
+$color_footer_left : #fff;
+
 //$color-header-hover-not-sticky: $second-color;
-$color-chevron: #d6a89f;
-$bg-hashtag :   #9ba9b3;
+$color-chevron: #d79a10;
+$bg-hashtag :   #000;
