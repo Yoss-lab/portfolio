@@ -1148,9 +1148,9 @@ section, .section {
 }
 
 .projects{
-    background-color: $bg_section_light;
-    color: $color_section_light;
-    .items-view{
+    background-color: $bg_section_dark;
+    color: $color_section_dark;
+    .items-view{ 
     display: flex;
     flex-wrap: wrap;
     max-width: none;
