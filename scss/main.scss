@@ -1293,6 +1293,9 @@ section, .section {
                 display: none;
             }
         }
+        &:last-child{
+            margin-right: 0;
+        }
         @media (max-width:991px) {
             max-width: calc((100% - 40px)/2);
             margin-right: 20px;
@@ -1490,7 +1493,7 @@ body#resume {
     }
 }
 section.breadcrumbs{
-    background: rgba($second-color , .2);
+    background:$bg_section_dark ;
     padding: 15px 10px;
     color: #000;
     margin-top: 60px;
