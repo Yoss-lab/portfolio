@@ -874,6 +874,7 @@ section, .section {
             flex-direction: row;
             background: #fff;
             position: relative;
+            min-height:60px;
             
             &::before{
                 position: absolute;
@@ -909,6 +910,9 @@ section, .section {
                 margin-right: 10px !important;
             }
             &:nth-of-type(5n+5){
+                margin-right: 0 !important;
+            }
+            &:last-child{
                 margin-right: 0 !important;
             }
             .cnt{
