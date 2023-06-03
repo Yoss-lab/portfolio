@@ -908,7 +908,8 @@ section, .section {
                 }
             
                 img{
-                    width: 30px;
+                    width: 40px;
+                    object-fit: contain;
                     
                 }
             }
