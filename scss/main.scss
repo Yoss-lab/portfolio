@@ -9,7 +9,10 @@
 i { 
     font-family: 'FontAwesome', sans-serif; 
 }
-
+img{
+    height: 100%;
+    width:100%
+}
 body { 
     font-family: $font-body;
     overflow-x: hidden;
@@ -61,7 +64,7 @@ a{
     //}
     width: 100%;
     height: 75vh;
-    background-image: url("img/slider.jpg");
+    background-image: url("img/slider3.jpg");
     background-size: cover; 
     background-position: bottom center;
    // background-color: $general-color;
@@ -75,7 +78,7 @@ a{
         left: 0;
         height: 100%;
         width: 100%;
-        background-color: rgba(210 ,209 ,210,.1);
+        background-color: rgba(0 ,0 ,0,.3);
         z-index: 0;
     }
     .cnt{
@@ -83,6 +86,10 @@ a{
         text-align: left;
         margin: 0 auto 0 45vh;
         padding: 20px;
+        //background-color: rgba(255,255,255,.6);
+        color: #fff;
+        font-weight: 600;
+        max-width: 500px;
         @media (max-width:1199px) {
             margin: 0 auto 0 20vh;
         }
@@ -130,7 +137,7 @@ a{
     }
     .title-slider{
         font-size: 40px;
-
+        text-shadow: 0 0 5px #111;
         @media (max-width:1199px) {
             font-size: 36px;
         }
@@ -153,6 +160,7 @@ a{
     .sub-title-slider{
         margin-top: 15px;
         font-size: 25px;
+        text-shadow: 0 0 5px #111;
         @media (max-width:1199px) {
             font-size: 24px;
         }
@@ -171,8 +179,9 @@ a{
     }
     .text-slider{
         font-size: 20px;
-        max-width: 450px;
+        //max-width: 450px;
         margin: 15px 0;
+        text-shadow: 0 0 5px #111;
         @media (max-width:767px) {
             font-size: 18px;
         }
@@ -226,8 +235,14 @@ a{
     }
     .slogan-header{
         font-size: 42px;
+        @media (max-width:1199px) {
+            font-size: 36px;
+        }
+        @media (max-width:991px) {
+            font-size: 31px;
+        }
         @media (max-width:767px) {
-            font-size: 35px;
+            font-size: 31px;
         }
         @media (max-width:400px) {
             font-size: 30px;
@@ -304,7 +319,7 @@ button.navbar-toggler{
     border: none !important;
     box-shadow: none !important;
     .navbar-toggler-icon {
-        background-image: url("../img/menu-noir.svg") !important;
+        background-image: url("../img/menu-blanc.svg") !important;
     }
 }
  
@@ -363,7 +378,7 @@ button.navbar-toggler{
         a{
             color: #fff;
             &:hover{
-                color: #000;
+                color: $footer-hover;
             }
         }
       }
@@ -437,16 +452,16 @@ button.navbar-toggler{
 
     .about-box{
         
-        @media (min-width:768px) {
-            max-width: 600px;  
-        }
-        /* background-color: #d2d1d2; */
-       // box-shadow: 0px 10px 40px rgba(0 ,0 ,0 , .2);
+       
+        background-color: #f7f8fa;
+        box-shadow: 0px 0px 15px rgba(0,0,0,.04);
         padding: 25px 25px;
-        margin: auto;
-        z-index: 1;
+        
+        z-index: 2;
         position: relative;
-      
+        @media (min-width:768px) {
+            margin: auto -19vh auto auto;
+        }
         
         .social-icons{
             ul{
@@ -492,14 +507,14 @@ button.navbar-toggler{
     }
     .about-image{
         position: relative;
-        padding: 5px 5px 5px 5px;
-        max-width: 300px;
-        width: 100%;
-        margin: auto 18vh auto auto;
-        border-radius: 50%;
-        @media (max-width:991px) {
+        //padding: 5px 5px 5px 5px;
+       // max-width: 588px;
+        width: 100%; 
+        //margin: auto 18vh auto auto;
+        //border-radius: 50%;
+        /* @media (max-width:991px) {
             max-width: 270px;
-        }
+        } */
         @media (max-width:767px) {
             margin: auto;
         }
@@ -513,6 +528,7 @@ button.navbar-toggler{
             width: 95%;
             height: 95%;
             z-index: -1;
+            display: none;
             //border-radius: 50%;
         }
        /*  max-width: 600px;
@@ -522,16 +538,7 @@ button.navbar-toggler{
         border-radius: 3px;
         overflow: hidden;
         box-shadow: 0px 0px 30px rgba(0 ,0 ,0 , .1); */
-        img{
-            width: 290px;
-            height: 290px;
-           // border-radius: 50%;
-            background-color: $color-body;
-            @media (max-width:991px) {
-                width: 260px;
-                height: 260px;
-            }
-        }
+        
     }
     .about-name{
         margin: 20px 0;
@@ -702,9 +709,12 @@ button.navbar-toggler{
             font-size: 20px;
             font-weight: 700;
         }
-        &:nth-of-type(3n+3){
-            margin-right: 0 !important;
+        @media (min-width:992px) {
+            &:nth-of-type(3n+3){
+                margin-right: 0 !important;
+            }
         }
+        
         .cnt{
             display: flex;
             justify-content: center;
@@ -844,6 +854,7 @@ section, .section {
    // background-color: $bg_section_dark;
     color: $color_section_dark;
     box-shadow: 0 -7px 15px rgba(255,255,255,.1);
+    background-color: rgba(247, 248, 250,.6);
     
 }
 .tools , .skills{
@@ -912,9 +923,13 @@ section, .section {
             &:nth-of-type(5n+5){
                 margin-right: 0 !important;
             }
+           
             &:last-child{
-                margin-right: 0 !important;
+                @media (min-width:401px) {
+                    margin-right: 0 !important;
+                 }
             }
+           
             .cnt{
                 display: flex;
                 justify-content: center;
@@ -1007,6 +1022,7 @@ section, .section {
             margin: 15px 0 15px 0px;
             padding: 0;
             text-align: left;
+            
             &-image{
                 display: none;
             }
@@ -1075,6 +1091,12 @@ section, .section {
        position: relative;
       background-color:  $bg_section_light;
       color: $color_section_light;
+
+      .img-certif {
+        max-width: 160px;
+    }
+    
+    .item-desc {flex-direction: row;display: flex;}
     /* &::before{
         position: absolute;
         content: "";
