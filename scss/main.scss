@@ -1374,6 +1374,7 @@ footer{
     .section-title{
         font-size: 14px;
         margin-bottom: 0;
+        color:#fff;
         @media (max-width:991px) {
             font-size: 13px;
             font-weight: 600;
@@ -1795,3 +1796,17 @@ section.timeline{
     }
   }
   /* end timeline */
+
+
+  .widget{
+    .badge-base.LI-profile-badge {
+        margin: 30px auto;
+    }
+    .badge-base.LI-profile-badge {
+        margin: 20px auto !important;
+    }
+    
+    .profile-badge {
+        margin: 0 auto;
+    }
+  }
