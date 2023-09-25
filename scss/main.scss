@@ -581,8 +581,26 @@ button.navbar-toggler{
 }
 .achievement{
     position: relative;
-    background-color: $bg_section_light;
-    color: $color_section_light;
+    background-color: $bg_section_dark2;
+    color: $color_section_dark2;
+
+    background-image: url(../img/parallax.jpg);
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: cover;
+    z-index: 1;
+    &::after{
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        //background: linear-gradient(rgba(255,255,255) 0% , rgba(0,0,0,0) 24%);
+        background: rgba(0,0,0,.9);
+        z-index: -1;
+       /*  display: none; */
+    }
     
    /*  &::before{
         position: absolute;
@@ -614,18 +632,22 @@ button.navbar-toggler{
     text-align: center;
     padding: 25px;
     //margin: auto;
-    justify-content: center;
     display: flex;
+    justify-content: space-around;
     flex-direction: row;
     flex-wrap: wrap;
+    max-width: 900px;
+    margin: 0 auto;
     @media (max-width:600px) {
         flex-direction: column;
     }
     &-title{
         font-weight: 700;
+        font-size: 32px;
     }
     .item-about{
         font-size: 22px;
+        text-transform: uppercase;
         display:flex;
         flex-direction: column;
         padding: 15px 60px;
@@ -657,8 +679,9 @@ button.navbar-toggler{
                 height: 1px;
                 width: 50%;
             }
+            display: none;
         }
-        &:first-child{
+        /* &:first-child{
             @media (min-width:601px) {
                 padding-left: 0;
             }
@@ -677,7 +700,7 @@ button.navbar-toggler{
             &::before{
                 display: none;
             }
-        }
+        } */
     }
 }
 
